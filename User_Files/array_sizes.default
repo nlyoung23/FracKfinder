@@ -1,0 +1,149 @@
+flow: 1d elements                                           
+       50000
+flow: 1d zones                                              
+          20
+dual flow bc: flux faces                                    
+       10000
+dual flow bc: flux function panels                          
+          10
+dual flow bc: flux nodes                                    
+       10000
+dual flow bc: flux zones                                    
+          10
+dual flow bc: head function panels                          
+         100
+dual flow bc: head nodes                                    
+       10000
+dual: material zones                                        
+          20
+flow: material zones                                        
+          20
+flow bc: drain-type flux nodes                              
+           2
+flow bc: evaporation faces                                  
+       10000
+flow bc: evaporation nodes                                  
+       10000
+flow bc: evaporation zones                                  
+          10
+flow bc: evaporation function panels                        
+          10
+flow bc: flux nodes                                         
+       10000
+flow bc: flux faces                                         
+       10000
+flow bc: flux zones                                         
+          10
+flow bc: flux function panels                               
+          10
+flow bc: head nodes                                         
+       10000
+flow bc: head function panels                               
+         100
+flow bc: node sets                                          
+         100
+flow bc: river-type flux nodes                              
+           2
+flow bc: hydrostatic node columns                           
+         100
+heat transfer permafrost: thawing table                     
+          50
+heat transfer permafrost: freezing table                    
+          50
+heat transfer permafrost: thawing-freezing table            
+          50
+heat transfer permafrost: temperature function panels       
+         300
+fractures: 2d elements                                      
+      100000
+fractures: zones                                            
+         300
+soil frost: elements                                        
+       10000
+soil frost : function panels                                
+         100
+general: list                                               
+         300
+mesh: faces connected to a node                             
+          80
+mesh: node connections                                      
+          20
+mesh: node sheets in z for layered grids                    
+          50
+mesh: x grid lines (rectangular)                            
+        1000
+mesh: y grid lines (rectangular)                            
+        1000
+mesh: z grid lines (rectangular)                            
+        1000
+mesh: number of layers                                      
+         100
+mesh: number of sublayers per layer                         
+         100
+observation wells: nodes                                    
+         501
+output: flux volume nodes                                   
+        1000
+output: flux volumes                                        
+          10
+output: nodes                                               
+         100
+output: sw-gw flux nodes                                    
+         300
+output: times                                               
+        1000
+permafrost : elements                                       
+       10000
+permafrost : function panels                                
+         100
+solution: target times                                      
+        3000
+surface flow: 2d elements                                   
+       50000
+surface flow: boundary segments                             
+        5000
+surface flow: hydrographs                                   
+          20
+surface flow: hydrograph nodes                              
+         100
+surface flow: material zones                                
+          20
+surface flow bc: critical depth segments                    
+        5000
+surface flow bc: zero-depth gradient segments               
+        5000
+tile drains: 3d elements intersecting                       
+       10000
+transport: species                                          
+           5
+transport: species kinetic reactions                        
+           2
+transport bc: concentration nodes                           
+       10000
+transport bc: concentration function panels                 
+         100
+transport bc: flux nodes                                    
+       10000
+transport bc: flux function panels                          
+         100
+transport bc: immiscible phase dissolution nodes            
+        1000
+transport bc: third-type concentration faces                
+       10000
+transport bc: third-type concentration function panels      
+         100
+transport bc: zero-order source function panels             
+         100
+transport bc: first-order source function panels            
+         100
+wells: 2d fracture elements intersecting                    
+        1000
+wells: 3d elements intersecting                             
+        1000
+tiles: 3d elements intersecting                             
+        1000
+stress : stressed nodes                                     
+       10000
+stress : stress function panels                             
+         100
+end                                                         

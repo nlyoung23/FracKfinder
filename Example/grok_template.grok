@@ -1,0 +1,269 @@
+!==================================================
+!============ Problem description =================
+!==================================================
+Hydraulic conductivity tensor determination simulations
+
+Enter version number and date if you wish
+Version 1.51 08.30.2017 
+
+add details about grid here 
+
+!x
+!x
+!x
+!x
+end !title
+!==================================================
+!================ Grid generation =================
+!==================================================
+  read grid components
+
+        porous media
+        .\_props\3d_mesho.coordinates_pm
+        .\_props\3d_mesho.elements_pm
+
+        fracture
+       .\_props\2d_mesho.coordinates_frac
+       .\_props\2d_mesho.elements_frac
+
+    end ! ...of read grid components section
+
+end
+!14 lines
+!=======================================
+!==== General simulation parameters ====
+!=======================================
+include: .\_props\fluid_props.ginc
+units: kilogram-metre-second
+
+
+
+!no nodal flow check
+!Nodal flow check tolerance
+!0.25   !0.01 default
+!remove negative coefficients
+
+!compute underrelaxation factor
+!underrelaxation factor
+!1d-5
+
+!upstream weighting factor
+!0.0
+
+!flow solver detail
+!1
+
+!flow solver convergence criteria
+!1e-7
+
+!flow solver maximum iterations
+!10000
+!26 lines
+!==================================================
+!================= POROUS MEDIA ===================
+!==================================================
+
+
+! ------- Matrix properties -------------------
+
+use domain type
+porous media
+
+properties file
+.\_props\aldentill.mprops
+
+clear chosen zones
+clear chosen faces
+clear chosen segments
+clear chosen elements
+clear chosen nodes
+
+clear chosen zones
+choose zones all
+
+read properties
+matrix
+!19 lines
+!----------- Fracture properties -----------------
+use domain type
+fracture
+
+properties file
+.\_props\default_years.fprops
+!6 lines
+! ------------ initial conditions ----------------
+use domain type
+porous media
+
+clear chosen zones
+clear chosen faces
+clear chosen segments
+clear chosen elements
+clear chosen nodes
+
+
+choose nodes all
+
+initial head 
+0.1
+
+!initial head from output file
+!
+
+!map initial head from raster
+!
+
+!restart file for heads
+!
+!24 lines
+! ---------- boundary conditions ------------------
+clear chosen zones
+clear chosen faces
+clear chosen segments
+clear chosen elements
+clear chosen nodes
+!6 lines
+!#-------------------------  Headbc
+use domain type
+porous media
+
+clear chosen nodes
+choose nodes block
+-0.9 -0.9
+-0.9 0.9
+-0.9 0.9
+
+create node set
+inflow
+
+boundary condition
+
+    type
+    head
+    
+    name
+    inflow
+    
+    node set
+    inflow
+    
+    time file table 
+    0.0   9.txt
+    end
+
+    tecplot output
+
+end
+clear chosen nodes
+choose nodes block
+0.9 0.9
+-0.9 0.9
+-0.9 0.9
+
+create node set
+HDOWN
+
+boundary condition
+
+    type
+    head
+    
+    name
+    HDOWN
+    
+    node set
+    HDOWN
+    
+    time file table 
+    0.0    10.txt
+    end
+
+    tecplot output
+
+end
+
+echo flow boundary conditions
+!59 lines
+!#======================================
+!========= Mass Transport ==============
+!=======================================
+
+!----------------tracer definition
+solute
+
+   name
+   br
+
+   free-solution diffusion coefficient
+   4.3E-10
+
+end solute
+
+clear chosen nodes
+choose nodes all
+
+initial concentration
+0.0
+
+!--------initial concentration in fractures
+
+use domain type
+fracture
+
+clear chosen nodes
+choose nodes block
+-0.9 -0.9
+-0.9 0.9
+-0.9 0.9
+
+
+initial concentration
+1 ! = mass of bromide in 1 cubic meter of 0.05 mMol solution of bromide 
+!32 lines
+!#======================================
+!========= SIMULATION CONTROL ==========
+!=======================================
+
+Newton maximum iterations
+25
+Newton iteration control
+25
+Jacobian epsilon
+1.0d-6
+Newton absolute convergence criteria
+1.0d-3
+Newton residual convergence criteria
+1.0d-3
+Solver acceleration technique
+1
+!Newton maximum update for head
+!0.3
+!Newton maximum update for depth
+!0.1
+
+!18 lines
+!==================================================
+!============= Timestep Controls ==================
+!==================================================
+
+
+generate target times
+0.0             ! start time
+900             ! initial timestep
+1.0             ! timestep multiplier
+900.            ! maximum timestep
+900.       ! end time
+
+!10 lines
+!==================================================
+!================= Output =========================
+!==================================================
+
+mass balance output scientific format
+echo flow boundary conditions
+
+output times
+0.000001
+
+
+end

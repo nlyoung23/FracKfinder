@@ -1,0 +1,67 @@
+
+!--------------------------------------
+ConstantAp
+
+!Facture aperture for Tom's constant aperture case
+aperture
+.0002
+!.01
+
+longitudinal dispersivity
+10.0d0
+
+Transverse dispersivity
+1.0d0
+
+
+end
+!--------------------------------------
+NewberryFrac
+
+!Single fracture aperture that gives flux of 0.02 m3/s for head gradient of 1019/500  m/m  
+aperture
+0.00025
+
+
+longitudinal dispersivity
+10.0d0
+
+Transverse dispersivity
+0.0d0
+
+
+end
+!--------------------------------------
+NewberryBigFrac
+
+!Double the fracture aperture above, get flux of 0.02 m3/s by adjustung head gradient  
+aperture
+0.0005
+
+
+longitudinal dispersivity
+10.0d0
+
+Transverse dispersivity
+0.0d0
+
+
+end
+
+!--------------------------------------
+NewberryHugeFrac
+
+!Double the fracture aperture above, get flux of 0.02 m3/s by adjustung head gradient  
+aperture
+0.05
+
+longitudinal dispersivity
+10.0d0
+
+Transverse dispersivity
+0.0d0
+
+
+end
+
+

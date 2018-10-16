@@ -1,0 +1,30 @@
+!------------------------------------------
+! Fractured Till - Alden Member, Des Moines Lobe (via Helmke et al. (2005))
+matrix
+
+k isotropic
+6.8e-8      !  m/s 
+
+porosity
+0.298
+
+longitudinal dispersivity
+0.05
+transverse dispersivity
+0.00
+vertical transverse dispersivity
+0.00
+
+! thermal conductivity of solid
+! 5.971e22
+! 
+! bulk density
+! 2650.
+! 
+! specific heat capacity of solid
+! 6.971e17
+
+
+
+end material
+!------------------------------------------

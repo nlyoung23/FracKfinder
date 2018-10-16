@@ -1,0 +1,24 @@
+!----------------------------------------------------
+! This file provides a central location for defining fluid properties for
+! GROK and TG, which uses them to convert Fracman transmissivity to 
+! equivalent cubic law apertures for use in HGS.
+
+! You must supply values for gravitational acceleration constant, fluid 
+! density and viscosity even if they are the same as the HGS default values. 
+
+! For convenience, we also specify the units instruction so TG has access to it as well.
+
+units: kilogram-metre-year
+
+gravitational acceleration 
+! default 9.80665  m/s^2 = 9.7528e15 m/y^2
+9.80665
+
+reference fluid density
+! default = 1000 kg/m^3
+1000.0
+
+reference fluid viscosity
+! default =     1.124e-3 kg/(m*s) = 35446.464 kg/(m*y)
+! this run =    1.3e-4   kg/(m*s) = 4099.68  kg/(m*y)
+1.124e-3
